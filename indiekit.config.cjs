@@ -25,23 +25,23 @@ const postTypes = [
   }
 ];
 
-const postTemplate = (properties) => {
-  let text;
+// const postTemplate = (properties) => {
+//   let text;
 
-  if (properties.published) {
-    text += `\n---\nDate: ${properties.published}\n---`;
-  }
+//   if (properties.published) {
+//     text += `\n---\nDate: ${properties.published}\n---`;
+//   }
 
-  if (properties.name) {
-    text += `\n---\nTitle: ${properties.name}\n---`;
-  }
+//   if (properties.name) {
+//     text += `\n---\nTitle: ${properties.name}\n---`;
+//   }
 
-  if (properties.content) {
-    text += `\n---\nText: ${properties.content}`;
-  }
+//   if (properties.content) {
+//     text += `\n---\nText: ${properties.content}`;
+//   }
 
-  return text;
-}
+//   return text;
+// }
 
 module.exports = {
   /**
@@ -78,7 +78,7 @@ module.exports = {
   publication: {
     me: "https://niels.im",
     postTypes: postTypes,
-    postTemplate: postTemplate,
+    // postTemplate: postTemplate,
     timezone: "Europe/Amsterdam",
   },
   /**
