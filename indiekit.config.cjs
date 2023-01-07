@@ -17,31 +17,21 @@ const postTypes = [
     name: "Article",
     post: {
       path: "src/notes/{slug}.md",
-      url: "notes/{slug}",
+      url: "note/{slug}",
     },
     media: {
       path: "src/images/{filename}"
     }
   },
+  {
+    type: "note",
+    name: "Note",
+    post: {
+      path: "src/notes/{dd}-{MM}-{yyyy}-{slug}.md",
+      url: "note/{dd}/{MM}/{yyyy}/{slug}",
+    },
+  },
 ];
-
-// const postTemplate = (properties) => {
-//   let text;
-
-//   if (properties.published) {
-//     text += `\n---\nDate: ${properties.published}\n---`;
-//   }
-
-//   if (properties.name) {
-//     text += `\n---\nTitle: ${properties.name}\n---`;
-//   }
-
-//   if (properties.content) {
-//     text += `\n---\nText: ${properties.content}`;
-//   }
-
-//   return text;
-// }
 
 module.exports = {
   /**
@@ -77,7 +67,6 @@ module.exports = {
   publication: {
     me: "https://niels.im",
     postTypes: postTypes,
-    // postTemplate: postTemplate,
     timezone: "Europe/Amsterdam",
   },
   /**
