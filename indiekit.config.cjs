@@ -28,7 +28,7 @@ const postTypes = [
     name: "Note",
     post: {
       path: "src/notes/{dd}-{MM}-{yyyy}-{slug}.md",
-      url: "note/{dd}/{MM}/{yyyy}/{slug}",
+      url: "note/{dd}-{MM}-{yyyy}-{slug}",
     },
   },
 ];
