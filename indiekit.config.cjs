@@ -22,7 +22,7 @@ const postTypes = [
     media: {
       path: "src/images/{filename}"
     }
-  }
+  },
 ];
 
 // const postTemplate = (properties) => {
@@ -51,7 +51,6 @@ module.exports = {
    * See: https://getindiekit.com/configuration/#application
    */
   application: {
-    url: process.env.URL,
     mongodbUrl: process.env.MONGO_URL,
     name: "Niels.im Indiekit"
   },
