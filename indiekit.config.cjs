@@ -16,8 +16,8 @@ const postTypes = [
     type: "article",
     name: "Article",
     post: {
-      path: "src/notes/{slug}.md",
-      url: "note/{slug}",
+      path: "src/articles/{slug}.md",
+      url: "article/{slug}",
     },
     media: {
       path: "src/images/{filename}"
