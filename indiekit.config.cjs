@@ -64,7 +64,7 @@ module.exports = {
    * See: https://getindiekit.com/configuration/#plugins
    */
   plugins: [
-    // "@indiekit/preset-jekyll",
+    "@indiekit/preset-jekyll",
     "@indiekit/store-github",
     "@indiekit/syndicator-mastodon",
   ],
