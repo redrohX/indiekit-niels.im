@@ -41,6 +41,7 @@ module.exports = {
    * See: https://getindiekit.com/configuration/#application
    */
   application: {
+    url: process.env.SITE_URL,
     mongodbUrl: process.env.MONGO_URL,
     name: "Niels.im Indiekit"
   },
