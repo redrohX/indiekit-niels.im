@@ -31,6 +31,14 @@ const postTypes = [
       url: "note/{dd}-{MM}-{yyyy}-{slug}",
     },
   },
+  {
+    type: "bookmark",
+    name: "Bookmark",
+    post: {
+      path: "src/notes/{dd}-{MM}-{yyyy}-{slug}.md",
+      url: "note/{dd}-{MM}-{yyyy}-{slug}",
+    },
+  },
 ];
 
 module.exports = {
