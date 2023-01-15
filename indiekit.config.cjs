@@ -41,6 +41,10 @@ const postTypes = [
   },
 ];
 
+postTemplates = (properties) => {
+  properties = {...(properties.categories && { tags: properties.categories })}
+};
+
 module.exports = {
   /**
    * Set application options
@@ -76,6 +80,7 @@ module.exports = {
   publication: {
     me: "https://niels.im",
     postTypes: postTypes,
+    postTemplates: postTemplates,
     timezone: "Europe/Amsterdam",
   },
   /**
