@@ -18,7 +18,6 @@ const postTypes = [
     post: {
       path: "src/articles/{slug}.md",
       url: "article/{slug}",
-      tags: "{category}",
     },
     media: {
       path: "src/images/{filename}"
@@ -30,7 +29,6 @@ const postTypes = [
     post: {
       path: "src/notes/{dd}-{MM}-{yyyy}-{slug}.md",
       url: "note/{dd}-{MM}-{yyyy}-{slug}",
-      tags: "{category}",
     },
   },
   {
@@ -39,7 +37,6 @@ const postTypes = [
     post: {
       path: "src/notes/{dd}-{MM}-{yyyy}-{slug}.md",
       url: "note/{dd}-{MM}-{yyyy}-{slug}",
-      tags: "{category}",
     },
   },
 ];
