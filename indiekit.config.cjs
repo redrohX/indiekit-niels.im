@@ -1,6 +1,5 @@
 require('dotenv').config()
 
-const YAML = require ('yaml');
 const process = require("node:process");
 
 /**
@@ -19,6 +18,7 @@ const postTypes = [
     post: {
       path: "src/articles/{slug}.md",
       url: "article/{slug}",
+      tags: "{category}",
     },
     media: {
       path: "src/images/{filename}"
@@ -30,6 +30,7 @@ const postTypes = [
     post: {
       path: "src/notes/{dd}-{MM}-{yyyy}-{slug}.md",
       url: "note/{dd}-{MM}-{yyyy}-{slug}",
+      tags: "{category}",
     },
   },
   {
@@ -38,60 +39,61 @@ const postTypes = [
     post: {
       path: "src/notes/{dd}-{MM}-{yyyy}-{slug}.md",
       url: "note/{dd}-{MM}-{yyyy}-{slug}",
+      tags: "{category}",
     },
   },
 ];
 
-postTemplates = (properties) => {
-  let content;
-  if (properties.content) {
-    content =
-      properties.content.text ||
-      properties.content.html ||
-      properties.content;
-    content = `${content}\n`;
-  } else {
-    content = "";
-  }
+// postTemplates = (properties) => {
+//   let content;
+//   if (properties.content) {
+//     content =
+//       properties.content.text ||
+//       properties.content.html ||
+//       properties.content;
+//     content = `${content}\n`;
+//   } else {
+//     content = "";
+//   }
 
-  properties = {
-    date: properties.published,
-    ...(properties.updated && { updated: properties.updated }),
-    ...(properties.deleted && { deleted: properties.deleted }),
-    ...(properties.name && { title: properties.name }),
-    ...(properties.summary && { excerpt: properties.summary }),
-    ...(properties.category && { category: properties.category }),
-    ...(properties.start && { start: properties.start }),
-    ...(properties.end && { end: properties.end }),
-    ...(properties.rsvp && { rsvp: properties.rsvp }),
-    ...(properties.location && { location: properties.location }),
-    ...(properties.checkin && { checkin: properties.checkin }),
-    ...(properties.audio && { audio: properties.audio }),
-    ...(properties.photo && { photo: properties.photo }),
-    ...(properties.video && { video: properties.video }),
-    ...(properties["bookmark-of"] && {
-      "bookmark-of": properties["bookmark-of"],
-    }),
-    ...(properties["like-of"] && { "like-of": properties["like-of"] }),
-    ...(properties["repost-of"] && { "repost-of": properties["repost-of"] }),
-    ...(properties["in-reply-to"] && {
-      "in-reply-to": properties["in-reply-to"],
-    }),
-    ...(properties["post-status"] === "draft" && { published: false }),
-    ...(properties.visibility && { visibility: properties.visibility }),
-    ...(properties.syndication && { syndication: properties.syndication }),
-    ...(properties["mp-syndicate-to"] && {
-      "mp-syndicate-to": properties["mp-syndicate-to"],
-    }),
-    ...(properties.references && { references: properties.references }),
-    ...(properties.categories && { tags: properties.categories }),
-    ...(properties.updated && { laatsteUpdate: properties.updated }),
-  };
-  let frontMatter = YAML.stringify(properties, { lineWidth: 0 });
-  frontMatter = `---\n${frontMatter}---\n`;
+//   properties = {
+//     date: properties.published,
+//     ...(properties.updated && { updated: properties.updated }),
+//     ...(properties.deleted && { deleted: properties.deleted }),
+//     ...(properties.name && { title: properties.name }),
+//     ...(properties.summary && { excerpt: properties.summary }),
+//     ...(properties.category && { category: properties.category }),
+//     ...(properties.start && { start: properties.start }),
+//     ...(properties.end && { end: properties.end }),
+//     ...(properties.rsvp && { rsvp: properties.rsvp }),
+//     ...(properties.location && { location: properties.location }),
+//     ...(properties.checkin && { checkin: properties.checkin }),
+//     ...(properties.audio && { audio: properties.audio }),
+//     ...(properties.photo && { photo: properties.photo }),
+//     ...(properties.video && { video: properties.video }),
+//     ...(properties["bookmark-of"] && {
+//       "bookmark-of": properties["bookmark-of"],
+//     }),
+//     ...(properties["like-of"] && { "like-of": properties["like-of"] }),
+//     ...(properties["repost-of"] && { "repost-of": properties["repost-of"] }),
+//     ...(properties["in-reply-to"] && {
+//       "in-reply-to": properties["in-reply-to"],
+//     }),
+//     ...(properties["post-status"] === "draft" && { published: false }),
+//     ...(properties.visibility && { visibility: properties.visibility }),
+//     ...(properties.syndication && { syndication: properties.syndication }),
+//     ...(properties["mp-syndicate-to"] && {
+//       "mp-syndicate-to": properties["mp-syndicate-to"],
+//     }),
+//     ...(properties.references && { references: properties.references }),
+//     ...(properties.categories && { tags: properties.categories }),
+//     ...(properties.updated && { laatsteUpdate: properties.updated }),
+//   };
+//   let frontMatter = YAML.stringify(properties, { lineWidth: 0 });
+//   frontMatter = `---\n${frontMatter}---\n`;
 
-  return frontMatter + content;
-};
+//   return frontMatter + content;
+// };
 
 module.exports = {
   /**
@@ -115,7 +117,7 @@ module.exports = {
    * See: https://getindiekit.com/configuration/#plugins
    */
   plugins: [
-    // "@indiekit/preset-jekyll",
+    "@indiekit/preset-jekyll",
     "@indiekit/store-github",
     "@indiekit/syndicator-mastodon",
   ],
@@ -128,7 +130,7 @@ module.exports = {
   publication: {
     me: "https://niels.im",
     postTypes: postTypes,
-    postTemplates: postTemplates,
+    // postTemplates: postTemplates,
     timezone: "Europe/Amsterdam",
   },
   /**
