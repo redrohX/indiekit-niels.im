@@ -39,6 +39,14 @@ const postTypes = [
       url: "note/{dd}-{MM}-{yyyy}-{slug}",
     },
   },
+  {
+    type: "reply",
+    name: "Reply",
+    post: {
+      path: "src/notes/{dd}-{MM}-{yyyy}-{slug}.md",
+      url: "note/{dd}-{MM}-{yyyy}-{slug}",
+    },
+  },
 ];
 
 // postTemplates = (properties) => {
